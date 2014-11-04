@@ -13,7 +13,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Main {
+public class GetNeigbor {
 	private static ArrayList<String> ipv4 = new ArrayList<String>();
 	private static int waitingTime = 1000; // 1000 = 1 second
 
@@ -58,10 +58,13 @@ public class Main {
 		}
 		
 		System.out.println("Pi : " + ipv4);
-		for (int i = 0; i < myArrList.size(); i++)
+		for (int i = 0; i < myArrList.size(); i++){
 			System.out.println(myArrList.get(i));
+		}
+		System.out.println("==========================");
 	}
 
+	
 	public static void getNeighborList(final ArrayList<String> ipv4) {
 		Timer myTimer;
 		myTimer = new Timer();
