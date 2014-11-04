@@ -38,7 +38,7 @@ public class GetNeigbor {
 			return json;
 		}catch(Exception e){
 			String piID = findPiID(ipv4);
-			System.out.println("can't connect to Pi" + piID.substring(0, piID.indexOf(":")) + " : " + ipv4);
+			System.out.println("can't connect to Pi" + piID.substring(0, piID.indexOf(":")) + " : " + ipv4.substring(7, ipv4.length()));
 			return null;
 		}
 	}
