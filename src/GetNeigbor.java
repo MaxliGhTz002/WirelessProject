@@ -13,6 +13,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import sun.security.mscapi.KeyStore.MY;
+
 public class GetNeigbor {
 	private static ArrayList<String> ipv4 = new ArrayList<String>();
 	private static int waitingTime = 1000; // 1000 = 1 second
@@ -43,28 +45,28 @@ public class GetNeigbor {
 		}
 	}
 
-	public static void getNeighbor(String ipv4) {
-		ArrayList<String> myArrList = null;
+	public static ArrayList<String> getNeighbor(String ipv4) {
+		ArrayList<String> niehgborList = null;
 		try {
 			JSONObject json = readJsonFromUrl("http://" + ipv4 + ":9090");
 			// System.out.println("json = " + json.toString());
-			if(json == null) return;
+			if(json == null) return null;
 			JSONArray neighbors = (JSONArray) json.get("neighbors");
 			// System.out.println("neighbors = " + neighbors);
 
 			JSONArray data = neighbors;
-			myArrList = new ArrayList<String>();
+			niehgborList = new ArrayList<String>();
 			for (int i = 0; i < data.length(); i++) {
 				JSONObject c = data.getJSONObject(i);
-				myArrList.add(c.getString("ipv4Address"));
+				niehgborList.add(c.getString("ipv4Address"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		System.out.println("Pi" + findPiID(ipv4) + " : " + ipv4);
-		for (int i = 0; i < myArrList.size(); i++){
-			System.out.println(myArrList.get(i));
+		for (int i = 0; i < niehgborList.size(); i++){
+			System.out.println(niehgborList.get(i));
 		}
 		System.out.println("==========================");
 	}
